@@ -4,16 +4,31 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 
 @Component
 public class MailService {
 
+    @Autowired(required = false)
+    @Qualifier("utc8") // 指定注入名称为"z"的ZoneId
     private ZoneId zoneId = ZoneId.systemDefault();
 
-    public void setZoneId(ZoneId zoneId) {
-        this.zoneId = zoneId;
+    @PostConstruct
+    public void init() {
+        System.out.println("Init mail service with zoneId = " + this.zoneId);
     }
+
+    @PreDestroy
+    public void shutdown() {
+        System.out.println("Shutdown mail service");
+    }
+
 
     public String getTime() {
         return ZonedDateTime.now(this.zoneId).format(DateTimeFormatter.ISO_ZONED_DATE_TIME);
