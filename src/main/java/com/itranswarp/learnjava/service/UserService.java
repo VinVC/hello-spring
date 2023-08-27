@@ -10,7 +10,11 @@ import org.springframework.stereotype.Component;
 public class UserService {
 
     @Autowired
-    private MailService mailService;
+    MailService mailService;
+
+    public UserService(@Autowired MailService mailService) {
+        this.mailService = mailService;
+    }
 
     private List<User> users = new ArrayList<>(List.of( // users:
             new User(1, "bob@example.com", "password", "Bob"), // bob
