@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.itranswarp.learnjava.metrics.MetricTime;
+
 @Component
 public class UserService {
 
@@ -35,6 +37,7 @@ public class UserService {
         return this.users.stream().filter(user -> user.getId() == id).findFirst().orElseThrow();
     }
 
+    @MetricTime("register")
     public User register(String email, String password, String name) {
         users.forEach((user) -> {
             if (user.getEmail().equalsIgnoreCase(email)) {

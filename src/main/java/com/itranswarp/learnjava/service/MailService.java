@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 
 import org.springframework.stereotype.Component;
 
+import com.itranswarp.learnjava.metrics.MetricTime;
+
 @Component
 public class MailService {
 
@@ -15,6 +17,7 @@ public class MailService {
         return ZonedDateTime.now(this.zoneId).format(DateTimeFormatter.ISO_ZONED_DATE_TIME);
     }
 
+    @MetricTime("loginMail")
     public void sendLoginMail(User user) {
         System.err.println(String.format("Hi, %s! You are logged in at %s", user.getName(), getTime()));
     }

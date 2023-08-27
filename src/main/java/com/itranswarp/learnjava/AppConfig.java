@@ -19,7 +19,6 @@ public class AppConfig {
         UserService userService = context.getBean(UserService.class);
         userService.register("test@example.com", "password", "test");
         userService.login("bob@example.com", "password");
-        // UserService class name: UserService$$SpringCGLIB$$0:
         System.out.println(userService.getClass().getName());
     }
 }
