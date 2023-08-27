@@ -3,13 +3,14 @@ package com.itranswarp.learnjava.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserService {
 
+    @Autowired
     private MailService mailService;
-
-    public void setMailService(MailService mailService) {
-        this.mailService = mailService;
-    }
 
     private List<User> users = new ArrayList<>(List.of( // users:
             new User(1, "bob@example.com", "password", "Bob"), // bob

@@ -4,6 +4,9 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MailService {
 
     private ZoneId zoneId = ZoneId.systemDefault();
