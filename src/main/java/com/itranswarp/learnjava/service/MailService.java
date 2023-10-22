@@ -16,7 +16,7 @@ import jakarta.annotation.PreDestroy;
 public class MailService {
 
     @Autowired(required = false)
-    @Qualifier("utc8") // 指定注入名称为"z"的ZoneId
+    @Qualifier("utc8") // 指定注入名称为"utc8"的ZoneId
     private ZoneId zoneId = ZoneId.systemDefault();
 
     @PostConstruct
